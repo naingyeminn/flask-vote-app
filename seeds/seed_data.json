@@ -1,15 +1,7 @@
 {
- "poll": "Champion League Winner",
- "question": "Who will win the Champion League?",
- "options": [ "Juventus",
-              "Milan",
-              "Inter",
-              "Barcelona",
-              "Real Madrid",
-              "Manchester City",
-              "Arsenal",
-              "Bayern Munich",
-              "Borussia Dortmund",
-              "Other team"
+ "poll": "DC vs Marvel",
+ "question": "What is your favorite Universe?",
+ "options": [ "DC",
+              "Marvel"
             ]
 }

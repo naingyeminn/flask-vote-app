@@ -1,0 +1,60 @@
+button.opt1{
+    background-color: #751414;
+  }
+  
+  button.opt2{
+    background-color: #0a6a97;
+  }
+  
+  #content-container{
+    z-index: 2;
+    position: relative;
+    margin: 0 auto;
+    display: table;
+    padding: 10px;
+    max-width: 940px;
+    height: 100%;
+  }
+  #content-container-center{
+    display: table-cell;
+    text-align: center;
+  }
+  
+  #content-container-center h3{
+    color: #254356;
+  }
+  
+  #choice button{
+    display: block;
+    height: 110px;
+    width: 330px;
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    font-size:18px;
+    font-weight: 700;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    float: left;
+  }
+  
+  #choice button.opt1:hover{
+    background-color: #9b1b1b;
+  }
+  
+  #choice button.opt2:hover{
+    background-color: #067cb3;
+  }
+  
+  #choice button.opt1:focus{
+    background-color: #af0000;
+  }
+  
+  #choice button.opt2:focus{
+    background-color: #1196d3;
+  }
+
+  .footer {
+    text-align: center;
+  }
