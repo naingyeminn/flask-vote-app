@@ -8,7 +8,7 @@ This application is intended for demo only.
 This application can be deployed locally. On linux, install git and clone the reposistory
 
     [root@centos]# yum install -y git
-    [root@centos]# git clone https://github.com/kalise/flask-vote-app
+    [root@centos]# git clone https://github.com/naingyeminn/flask-vote-app
     [root@centos]# cd flask-vote-app
 
 Install the dependencies
@@ -54,7 +54,7 @@ On Linux, install and start Docker
 Install git and clone the reposistory
 
     [root@centos]# yum install -y git
-    [root@centos]# git clone https://github.com/kalise/flask-vote-app
+    [root@centos]# git clone https://github.com/naingyeminn/flask-vote-app
     [root@centos]# cd flask-vote-app
 
 Build a Docker image
