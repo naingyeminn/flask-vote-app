@@ -37,7 +37,7 @@ RUN rm -f /app/data/app.db
 EXPOSE 8080
 
 # run as non-root
-RUN chown -R 1001:1001 /app
+RUN chmod -R 777 /app
 USER 1001
 
 # Define command to be run when launching the container
