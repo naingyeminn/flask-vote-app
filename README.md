@@ -21,7 +21,7 @@ and start the application
 
     python app.py
     Check if a poll already exists into db
-    * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+    * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
 
 Poll question and options are loaded from a JSON file called ``seed_data.json`` under the ``./seeds`` directory. This file is filled with default values, change it before to start the application.
 
@@ -66,12 +66,12 @@ Build a Docker image
 
 Start the container
 
-    docker run -d -p 80:5000 --name=vote flask-vote-app:latest
+    docker run -d -p 80:8080 --name=vote flask-vote-app:latest
 
 Seeds data directory containing the seed data file ``seed_data.json`` can be mounted as an external volume under the host ``/mnt`` directory
 
     cp flask-vote-app/seeds/seed_data.json /mnt
-    docker run -d -p 80:5000 -v /mnt:/app/seeds --name=vote flask-vote-app:latest
+    docker run -d -p 80:8080 -v /mnt:/app/seeds --name=vote flask-vote-app:latest
 
 An external MySQL database can be used instead of the internal sqlite by setting the desired env variables
 
@@ -81,6 +81,6 @@ An external MySQL database can be used instead of the internal sqlite by setting
                -e DB_USER=voteuser \
                -e DB_PASS=password \
                -e DB_TYPE=mysql \
-               -d -p 80:5000  --name=vote flask-vote-app:latest
+               -d -p 80:8080  --name=vote flask-vote-app:latest
 
  Happy polling!
