@@ -76,16 +76,16 @@ def vote():
            voted_option = Option.query.filter_by(poll_id=poll.id,id=vote).first() 
            voted_option.votes += 1
            db.session.commit()
-
+    
     # if request.method == 'GET':
-    options = Option.query.filter_by(poll_id=poll.id).all()
+    options = Option.query.filter_by(poll_id=poll.id).all()        
     resp = make_response(render_template('vote.html', hostname=hostname, poll=poll, options=options))
-
+    
     if has_voted:
        vote_stamp = hex(random.getrandbits(64))[2:-1]
        print "Set coookie for voted"
        resp.set_cookie('vote_stamp', vote_stamp)
-
+    
     return resp
 
 @app.route('/results.html')
@@ -94,20 +94,20 @@ def results():
     return render_template('results.html', hostname=hostname, poll=poll, results=results)
 
 if __name__ == '__main__':
-
+    
     db.create_all()
     db.session.commit()
     hostname = socket.gethostname()
-
+         
     print "Check if a poll already exists into db"
     # TODO check the latest one filtered by timestamp
     poll = Poll.query.first()
-
+    
     if poll:
        print "Restart the poll"
        poll.stamp = datetime.utcnow()
        db.session.commit()
-
+    
     else:
        print "Load seed data from file"
        try: 
@@ -123,6 +123,6 @@ if __name__ == '__main__':
        except:
           print "Cannot load seed data from file"
           poll = Poll("", "")
-
+    
     app.run(host='0.0.0.0', port=8080, debug=True)
 
