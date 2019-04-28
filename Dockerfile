@@ -1,9 +1,9 @@
-# Using official python runtime base image
-FROM python:2.7
+# Using centos image with python
+FROM centos:7
 
 LABEL Version 1.0
 
-MAINTAINER kalise <https://github.com/kalise/>
+MAINTAINER Naing Ye Minn <naingyeminn@gmail.com>
 
 # By default, the app uses an internal sqlite db
 # Use env variable to force an external SQL engine, e.g. MySQL
@@ -17,6 +17,12 @@ MAINTAINER kalise <https://github.com/kalise/>
 # Set the application directory
 WORKDIR /app
 
+# Update OS and install pip
+RUN yum install epel-release -y && yum install python-pip -y && yum clean all -y
+
+# Install dependencies
+RUN yum install MySQL-python -y && yum clean all -y
+
 # Install requirements.txt
 ADD requirements.txt /app/requirements.txt
 RUN pip install -r requirements.txt
@@ -24,11 +30,15 @@ RUN pip install -r requirements.txt
 # Copy code from the current folder to /app inside the container
 ADD . /app
 
-# Mount external volumes for logs and data
-VOLUME ["/app/data", "/app/seeds", "/app/logs"]
+# clean up local db data
+RUN rm -f /app/data/app.db
 
 # Expose the port server listen to
-EXPOSE 5000
+EXPOSE 8080
+
+# run as non-root
+RUN chown -R 1001:1001 /app
+USER 1001
 
 # Define command to be run when launching the container
 CMD ["python", "app.py"]
